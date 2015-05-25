@@ -1,0 +1,31 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BuscarSuDisponibilidadDeHoraWSService WSDL service -->
+
+  <service name="BuscarSuDisponibilidadDeHoraWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices"/>
+      <parameter name="wsdlServiceElement" value="BuscarSuDisponibilidadDeHoraWSService"/>
+      <parameter name="schemaQualified" value="http://webservices"/>
+      <parameter name="wsdlServicePort" value="BuscarSuDisponibilidadDeHoraWS"/>
+      <parameter name="className" value="webservices.BuscarSuDisponibilidadDeHoraWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BuscarSuDisponibilidadDeHoraWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getDisponibilidadDeHora" qname="operNS:getDisponibilidadDeHora" xmlns:operNS="http://webservices" returnQName="retNS:getDisponibilidadDeHoraReturn" xmlns:retNS="http://webservices" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idMedico" xmlns:pns="http://webservices" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fecha1" xmlns:pns="http://webservices" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fecha2" xmlns:pns="http://webservices" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getDisponibilidadDeHora"/>
+
+  </service>
+</deployment>

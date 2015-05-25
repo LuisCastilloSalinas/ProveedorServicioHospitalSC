@@ -1,0 +1,28 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EspecialidadWSService WSDL service -->
+
+  <service name="EspecialidadWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices"/>
+      <parameter name="wsdlServiceElement" value="EspecialidadWSService"/>
+      <parameter name="schemaQualified" value="http://webservices"/>
+      <parameter name="wsdlServicePort" value="EspecialidadWS"/>
+      <parameter name="className" value="webservices.EspecialidadWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="EspecialidadWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="obtenerEspecialidad" qname="operNS:obtenerEspecialidad" xmlns:operNS="http://webservices" returnQName="retNS:obtenerEspecialidadReturn" xmlns:retNS="http://webservices" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="obtenerEspecialidad"/>
+
+  </service>
+</deployment>

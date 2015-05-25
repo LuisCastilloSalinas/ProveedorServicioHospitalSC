@@ -1,0 +1,229 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\lucho\workspacePDS\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ProveedorServicioHospital\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:service name="BuscarHoraAPSWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns2:operation name="obtenerHoraAPS" qname="ns1:obtenerHoraAPS" returnQName="ns1:obtenerHoraAPSReturn" returnType="xsd:string" soapAction="" xmlns:ns1="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://xml.apache.org/axis/wsdd/">
+   <ns2:parameter qname="ns1:idMedico" type="xsd:int"/>
+   <ns2:parameter qname="ns1:fecha1" type="xsd:dateTime"/>
+   <ns2:parameter qname="ns1:fecha2" type="xsd:dateTime"/>
+  </ns2:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerHoraAPS"/>
+  <ns1:parameter name="wsdlPortType" value="BuscarHoraAPSWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlServicePort" value="BuscarHoraAPSWS"/>
+  <ns1:parameter name="className" value="webservices.BuscarHoraAPSWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="BuscarHoraAPSWSService"/>
+ </ns1:service>
+ <ns1:service name="ObtenerPacienteMasAtendidoWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="pacienteMasAtendido" qname="ns2:pacienteMasAtendido" returnQName="ns2:pacienteMasAtendidoReturn" returnType="xsd:string" soapAction="" xmlns:ns2="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns2:fecha1" type="xsd:dateTime"/>
+   <ns1:parameter qname="ns2:fecha2" type="xsd:dateTime"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="pacienteMasAtendido"/>
+  <ns1:parameter name="wsdlPortType" value="ObtenerPacienteMasAtendidoWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlServicePort" value="ObtenerPacienteMasAtendidoWS"/>
+  <ns1:parameter name="className" value="webservices.ObtenerPacienteMasAtendidoWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="ObtenerPacienteMasAtendidoWSService"/>
+ </ns1:service>
+ <ns1:service name="ObtenerPorcentajeOcupacionMedicoWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerPorcentajeOcupacionMedico" qname="ns3:obtenerPorcentajeOcupacionMedico" returnQName="ns3:obtenerPorcentajeOcupacionMedicoReturn" returnType="xsd:int" soapAction="" xmlns:ns3="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns3:idMedico" type="xsd:int"/>
+   <ns1:parameter qname="ns3:fecha1" type="xsd:dateTime"/>
+   <ns1:parameter qname="ns3:fecha2" type="xsd:dateTime"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerPorcentajeOcupacionMedico"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ObtenerPorcentajeOcupacionMedicoWS"/>
+  <ns1:parameter name="className" value="webservices.ObtenerPorcentajeOcupacionMedicoWS"/>
+  <ns1:parameter name="wsdlServicePort" value="ObtenerPorcentajeOcupacionMedicoWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="ObtenerPorcentajeOcupacionMedicoWSService"/>
+ </ns1:service>
+ <ns1:service name="ObtenerMedicosMasSolicitadosWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerMedicoMasSolicitado" qname="ns4:obtenerMedicoMasSolicitado" returnQName="ns4:obtenerMedicoMasSolicitadoReturn" returnType="xsd:string" soapAction="" xmlns:ns4="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns4:fecha1" type="xsd:dateTime"/>
+   <ns1:parameter qname="ns4:fecha2" type="xsd:dateTime"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerMedicoMasSolicitado"/>
+  <ns1:parameter name="wsdlPortType" value="ObtenerMedicosMasSolicitadosWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlServicePort" value="ObtenerMedicosMasSolicitadosWS"/>
+  <ns1:parameter name="className" value="webservices.ObtenerMedicosMasSolicitadosWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="ObtenerMedicosMasSolicitadosWSService"/>
+ </ns1:service>
+ <ns1:service name="BoxIdWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerNombreBoxPorId" qname="ns5:obtenerNombreBoxPorId" returnQName="ns5:obtenerNombreBoxPorIdReturn" returnType="xsd:string" soapAction="" xmlns:ns5="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns5:idBox" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerNombreBoxPorId"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="BoxIdWS"/>
+  <ns1:parameter name="className" value="webservices.BoxIdWS"/>
+  <ns1:parameter name="wsdlServicePort" value="BoxIdWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="BoxIdWSService"/>
+ </ns1:service>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="BuscarSuDisponibilidadDeHoraWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="getDisponibilidadDeHora" qname="ns6:getDisponibilidadDeHora" returnQName="ns6:getDisponibilidadDeHoraReturn" returnType="xsd:string" soapAction="" xmlns:ns6="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns6:idMedico" type="xsd:int"/>
+   <ns1:parameter qname="ns6:fecha1" type="xsd:dateTime"/>
+   <ns1:parameter qname="ns6:fecha2" type="xsd:dateTime"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="getDisponibilidadDeHora"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="BuscarSuDisponibilidadDeHoraWS"/>
+  <ns1:parameter name="className" value="webservices.BuscarSuDisponibilidadDeHoraWS"/>
+  <ns1:parameter name="wsdlServicePort" value="BuscarSuDisponibilidadDeHoraWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="BuscarSuDisponibilidadDeHoraWSService"/>
+ </ns1:service>
+ <ns1:service name="ReservarHoraAPSWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="reservarHoraAPS" qname="ns7:reservarHoraAPS" returnQName="ns7:reservarHoraAPSReturn" returnType="xsd:string" soapAction="" xmlns:ns7="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns7:idHoraMedicaAPS" type="xsd:int"/>
+   <ns1:parameter qname="ns7:idPaciente" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="reservarHoraAPS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="ReservarHoraAPSWS"/>
+  <ns1:parameter name="className" value="webservices.ReservarHoraAPSWS"/>
+  <ns1:parameter name="wsdlServicePort" value="ReservarHoraAPSWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="ReservarHoraAPSWSService"/>
+ </ns1:service>
+ <ns1:service name="EspecialidadWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerEspecialidad" qname="ns8:obtenerEspecialidad" returnQName="ns8:obtenerEspecialidadReturn" returnType="xsd:string" soapAction="" xmlns:ns8="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="obtenerEspecialidad"/>
+  <ns1:parameter name="wsdlPortType" value="EspecialidadWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlServicePort" value="EspecialidadWS"/>
+  <ns1:parameter name="className" value="webservices.EspecialidadWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="EspecialidadWSService"/>
+ </ns1:service>
+ <ns1:service name="ObtenerPorcentajeOcupacionBoxWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerPorcentajeOcupacionBox" qname="ns9:obtenerPorcentajeOcupacionBox" returnQName="ns9:obtenerPorcentajeOcupacionBoxReturn" returnType="xsd:int" soapAction="" xmlns:ns9="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns9:idBox" type="xsd:int"/>
+   <ns1:parameter qname="ns9:fecha1" type="xsd:dateTime"/>
+   <ns1:parameter qname="ns9:fecha2" type="xsd:dateTime"/>
+   <ns1:fault class="org.orm.PersistentException" qname="ns9:fault" type="ns10:PersistentException" xmlns:ns10="http://orm.org"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerPorcentajeOcupacionBox"/>
+  <ns1:parameter name="wsdlPortType" value="ObtenerPorcentajeOcupacionBoxWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://orm.org,http://webservices"/>
+  <ns1:parameter name="wsdlServicePort" value="ObtenerPorcentajeOcupacionBoxWS"/>
+  <ns1:parameter name="className" value="webservices.ObtenerPorcentajeOcupacionBoxWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="ObtenerPorcentajeOcupacionBoxWSService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns11:PersistentException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:org.orm.PersistentException" xmlns:ns11="http://orm.org"/>
+ </ns1:service>
+ <ns1:service name="ReservarHoraMedicaControlWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="reservarHoraMedicaControl" qname="ns12:reservarHoraMedicaControl" returnQName="ns12:reservarHoraMedicaControlReturn" returnType="xsd:string" soapAction="" xmlns:ns12="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns12:horaMedicaID" type="xsd:int"/>
+   <ns1:parameter qname="ns12:idPaciente" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="reservarHoraMedicaControl"/>
+  <ns1:parameter name="wsdlPortType" value="ReservarHoraMedicaControlWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlServicePort" value="ReservarHoraMedicaControlWS"/>
+  <ns1:parameter name="className" value="webservices.ReservarHoraMedicaControlWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="ReservarHoraMedicaControlWSService"/>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="MedicoEspecialidadWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerMedicosPorEspecialidad" qname="ns13:obtenerMedicosPorEspecialidad" returnQName="ns13:obtenerMedicosPorEspecialidadReturn" returnType="xsd:string" soapAction="" xmlns:ns13="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <ns1:parameter qname="ns13:idEspecialidad" type="xsd:int"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="obtenerMedicosPorEspecialidad"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="MedicoEspecialidadWS"/>
+  <ns1:parameter name="className" value="webservices.MedicoEspecialidadWS"/>
+  <ns1:parameter name="wsdlServicePort" value="MedicoEspecialidadWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="MedicoEspecialidadWSService"/>
+ </ns1:service>
+ <ns1:service name="MedicoWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerMedicos" qname="ns14:obtenerMedicos" returnQName="ns14:obtenerMedicosReturn" returnType="xsd:string" soapAction="" xmlns:ns14="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="obtenerMedicos"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="MedicoWS"/>
+  <ns1:parameter name="className" value="webservices.MedicoWS"/>
+  <ns1:parameter name="wsdlServicePort" value="MedicoWS"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="MedicoWSService"/>
+ </ns1:service>
+ <ns1:service name="BoxWS" provider="java:RPC" style="wrapped" use="literal">
+  <ns1:operation name="obtenerBoxMedicos" qname="ns15:obtenerBoxMedicos" returnQName="ns15:obtenerBoxMedicosReturn" returnType="xsd:string" soapAction="" xmlns:ns15="http://webservices" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="obtenerBoxMedicos"/>
+  <ns1:parameter name="wsdlPortType" value="BoxWS"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="schemaQualified" value="http://webservices"/>
+  <ns1:parameter name="wsdlServicePort" value="BoxWS"/>
+  <ns1:parameter name="className" value="webservices.BoxWS"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://webservices"/>
+  <ns1:parameter name="wsdlServiceElement" value="BoxWSService"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

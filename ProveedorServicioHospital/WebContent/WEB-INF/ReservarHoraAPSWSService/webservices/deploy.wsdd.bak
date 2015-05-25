@@ -1,0 +1,30 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ReservarHoraAPSWSService WSDL service -->
+
+  <service name="ReservarHoraAPSWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices"/>
+      <parameter name="wsdlServiceElement" value="ReservarHoraAPSWSService"/>
+      <parameter name="schemaQualified" value="http://webservices"/>
+      <parameter name="wsdlServicePort" value="ReservarHoraAPSWS"/>
+      <parameter name="className" value="webservices.ReservarHoraAPSWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ReservarHoraAPSWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="reservarHoraAPS" qname="operNS:reservarHoraAPS" xmlns:operNS="http://webservices" returnQName="retNS:reservarHoraAPSReturn" xmlns:retNS="http://webservices" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idHoraMedicaAPS" xmlns:pns="http://webservices" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:idPaciente" xmlns:pns="http://webservices" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="reservarHoraAPS"/>
+
+  </service>
+</deployment>

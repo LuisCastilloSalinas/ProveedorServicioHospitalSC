@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:tns1="http://orm.org" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://orm.org"/>
+   <element name="obtenerPorcentajeOcupacionBox">
+    <complexType>
+     <sequence>
+      <element name="idBox" type="xsd:int"/>
+      <element name="fecha1" type="xsd:dateTime"/>
+      <element name="fecha2" type="xsd:dateTime"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="obtenerPorcentajeOcupacionBoxResponse">
+    <complexType>
+     <sequence>
+      <element name="obtenerPorcentajeOcupacionBoxReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns1:PersistentException"/>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://orm.org" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="PersistentException">
+    <sequence/>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="obtenerPorcentajeOcupacionBoxResponse">
+
+      <wsdl:part element="impl:obtenerPorcentajeOcupacionBoxResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="PersistentException">
+
+      <wsdl:part element="impl:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="obtenerPorcentajeOcupacionBoxRequest">
+
+      <wsdl:part element="impl:obtenerPorcentajeOcupacionBox" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ObtenerPorcentajeOcupacionBoxWS">
+
+      <wsdl:operation name="obtenerPorcentajeOcupacionBox">
+
+         <wsdl:input message="impl:obtenerPorcentajeOcupacionBoxRequest" name="obtenerPorcentajeOcupacionBoxRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:obtenerPorcentajeOcupacionBoxResponse" name="obtenerPorcentajeOcupacionBoxResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:PersistentException" name="PersistentException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ObtenerPorcentajeOcupacionBoxWSSoapBinding" type="impl:ObtenerPorcentajeOcupacionBoxWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="obtenerPorcentajeOcupacionBox">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="obtenerPorcentajeOcupacionBoxRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="obtenerPorcentajeOcupacionBoxResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="PersistentException">
+
+            <wsdlsoap:fault name="PersistentException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ObtenerPorcentajeOcupacionBoxWSService">
+
+      <wsdl:port binding="impl:ObtenerPorcentajeOcupacionBoxWSSoapBinding" name="ObtenerPorcentajeOcupacionBoxWS">
+
+         <wsdlsoap:address location="http://localhost:8080/ProveedorServicioHospital/services/ObtenerPorcentajeOcupacionBoxWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

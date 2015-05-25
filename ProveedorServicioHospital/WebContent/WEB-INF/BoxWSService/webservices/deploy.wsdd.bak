@@ -1,0 +1,28 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from BoxWSService WSDL service -->
+
+  <service name="BoxWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices"/>
+      <parameter name="wsdlServiceElement" value="BoxWSService"/>
+      <parameter name="schemaQualified" value="http://webservices"/>
+      <parameter name="wsdlServicePort" value="BoxWS"/>
+      <parameter name="className" value="webservices.BoxWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="BoxWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="obtenerBoxMedicos" qname="operNS:obtenerBoxMedicos" xmlns:operNS="http://webservices" returnQName="retNS:obtenerBoxMedicosReturn" xmlns:retNS="http://webservices" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="obtenerBoxMedicos"/>
+
+  </service>
+</deployment>

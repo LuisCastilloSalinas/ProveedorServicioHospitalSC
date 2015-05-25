@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getDisponibilidadDeHora">
+    <complexType>
+     <sequence>
+      <element name="idMedico" type="xsd:int"/>
+      <element name="fecha1" type="xsd:dateTime"/>
+      <element name="fecha2" type="xsd:dateTime"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getDisponibilidadDeHoraResponse">
+    <complexType>
+     <sequence>
+      <element name="getDisponibilidadDeHoraReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getDisponibilidadDeHoraResponse">
+
+      <wsdl:part element="impl:getDisponibilidadDeHoraResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDisponibilidadDeHoraRequest">
+
+      <wsdl:part element="impl:getDisponibilidadDeHora" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BuscarSuDisponibilidadDeHoraWS">
+
+      <wsdl:operation name="getDisponibilidadDeHora">
+
+         <wsdl:input message="impl:getDisponibilidadDeHoraRequest" name="getDisponibilidadDeHoraRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getDisponibilidadDeHoraResponse" name="getDisponibilidadDeHoraResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BuscarSuDisponibilidadDeHoraWSSoapBinding" type="impl:BuscarSuDisponibilidadDeHoraWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getDisponibilidadDeHora">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDisponibilidadDeHoraRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDisponibilidadDeHoraResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BuscarSuDisponibilidadDeHoraWSService">
+
+      <wsdl:port binding="impl:BuscarSuDisponibilidadDeHoraWSSoapBinding" name="BuscarSuDisponibilidadDeHoraWS">
+
+         <wsdlsoap:address location="http://localhost:8080/ProveedorServicioHospital/services/BuscarSuDisponibilidadDeHoraWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

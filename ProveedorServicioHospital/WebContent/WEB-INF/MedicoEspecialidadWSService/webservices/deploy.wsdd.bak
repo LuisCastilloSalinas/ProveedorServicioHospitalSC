@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from MedicoEspecialidadWSService WSDL service -->
+
+  <service name="MedicoEspecialidadWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices"/>
+      <parameter name="wsdlServiceElement" value="MedicoEspecialidadWSService"/>
+      <parameter name="schemaQualified" value="http://webservices"/>
+      <parameter name="wsdlServicePort" value="MedicoEspecialidadWS"/>
+      <parameter name="className" value="webservices.MedicoEspecialidadWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="MedicoEspecialidadWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="obtenerMedicosPorEspecialidad" qname="operNS:obtenerMedicosPorEspecialidad" xmlns:operNS="http://webservices" returnQName="retNS:obtenerMedicosPorEspecialidadReturn" xmlns:retNS="http://webservices" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idEspecialidad" xmlns:pns="http://webservices" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="obtenerMedicosPorEspecialidad"/>
+
+  </service>
+</deployment>

@@ -1,0 +1,31 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ObtenerPorcentajeOcupacionMedicoWSService WSDL service -->
+
+  <service name="ObtenerPorcentajeOcupacionMedicoWS" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices"/>
+      <parameter name="wsdlServiceElement" value="ObtenerPorcentajeOcupacionMedicoWSService"/>
+      <parameter name="schemaQualified" value="http://webservices"/>
+      <parameter name="wsdlServicePort" value="ObtenerPorcentajeOcupacionMedicoWS"/>
+      <parameter name="className" value="webservices.ObtenerPorcentajeOcupacionMedicoWSSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ObtenerPorcentajeOcupacionMedicoWS"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="obtenerPorcentajeOcupacionMedico" qname="operNS:obtenerPorcentajeOcupacionMedico" xmlns:operNS="http://webservices" returnQName="retNS:obtenerPorcentajeOcupacionMedicoReturn" xmlns:retNS="http://webservices" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:idMedico" xmlns:pns="http://webservices" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fecha1" xmlns:pns="http://webservices" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:fecha2" xmlns:pns="http://webservices" type="tns:dateTime" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="obtenerPorcentajeOcupacionMedico"/>
+
+  </service>
+</deployment>

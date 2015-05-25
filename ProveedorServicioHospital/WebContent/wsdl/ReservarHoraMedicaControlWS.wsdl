@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="reservarHoraMedicaControl">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="horaMedicaID" type="xsd:int"/>
+      <element name="idPaciente" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="reservarHoraMedicaControlResponse">
+    <complexType>
+     <sequence>
+      <element name="reservarHoraMedicaControlReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="reservarHoraMedicaControlResponse">
+
+      <wsdl:part element="impl:reservarHoraMedicaControlResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="reservarHoraMedicaControlRequest">
+
+      <wsdl:part element="impl:reservarHoraMedicaControl" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ReservarHoraMedicaControlWS">
+
+      <wsdl:operation name="reservarHoraMedicaControl">
+
+         <wsdl:input message="impl:reservarHoraMedicaControlRequest" name="reservarHoraMedicaControlRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:reservarHoraMedicaControlResponse" name="reservarHoraMedicaControlResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ReservarHoraMedicaControlWSSoapBinding" type="impl:ReservarHoraMedicaControlWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="reservarHoraMedicaControl">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="reservarHoraMedicaControlRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="reservarHoraMedicaControlResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ReservarHoraMedicaControlWSService">
+
+      <wsdl:port binding="impl:ReservarHoraMedicaControlWSSoapBinding" name="ReservarHoraMedicaControlWS">
+
+         <wsdlsoap:address location="http://localhost:8080/ProveedorServicioHospital/services/ReservarHoraMedicaControlWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
